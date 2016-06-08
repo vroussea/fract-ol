@@ -6,13 +6,14 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 19:50:57 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/08 16:22:10 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/08 21:29:27 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <math.h>
 
-static void	is_colored(double x, double y, t_env env, int i_max)
+static void	iterate(double x, double y, t_env env, int i_max)
 {
 	int	i;
 	double	tmp;
@@ -32,7 +33,7 @@ static void	is_colored(double x, double y, t_env env, int i_max)
 	if (i == i_max)
 		pixel(x, y, 0xFFFFFF, env);
 	else
-		pixel(x, y, 0x0000FF * i / i_max, env);
+		pixel(x, y, 0xFFFFFF * pow(i, -1.001) / i_max, env);
 }
 
 void		mandelbrot(t_env env)
@@ -42,12 +43,12 @@ void		mandelbrot(t_env env)
 
 	env.zoom = 500;
 	x = 0;
-	while (x < env.sx)//(X2 - X1) * env.zoom)
+	while (x < env.sx)
 	{
 		y = 0;
-		while (y < env.sy)//(Y2 - Y1) * env.zoom)
+		while (y < env.sy)
 		{
-			is_colored(x, y, env, 100);
+			iterate(x, y, env, 100);
 			y++;
 		}
 		x++;
