@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/07 21:57:18 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/08 14:25:11 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	pixel(int x, int y, int col, t_env env)
 {
 	if (x > 0 && x < env.sx && y > 0 && y < env.sy)
 	{
-		ft_putstr("int x : ");
-		ft_putendl(ft_itoa(x));
+//		ft_putstr("int x : ");
+//:		ft_putendl(ft_itoa(x));
 		ft_memcpy(&env.meml[(x - 1) * 4 + (y - 1) * env.sizel], &col, 4);
 	}
 }
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	int		edan;
 
 	env.sx = 2560;
-	env.sy = 1310;
+	env.sy = 1315;
 	if (argc < 2 || (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
 		ft_strcmp(argv[1], "Julia") != 0 && ft_strcmp(argv[1], "Autre") != 0) ||
 		!(env.mlx = mlx_init()) ||

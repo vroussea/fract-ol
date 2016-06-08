@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/07 21:42:33 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/08 16:00:21 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
+
+#define X1 -2.1
+#define X2 0.6
+#define Y1 -1.2
+#define Y2 1.2
 
 typedef	struct	s_env
 {
