@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/06/08 17:29:51 by vroussea         ###   ########.fr        #
+#    Updated: 2016/06/09 16:35:46 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MKINC =		make -C libft/
 MLX =		-lmlx -framework OpenGL -framework AppKit
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
-SOURCES =	main.c event.c mandelbrot.c
+SOURCES =	main.c event.c mandelbrot.c julia.c
 OBJS =		$(SOURCES:.c=.o)
 
 all :		$(NAME)

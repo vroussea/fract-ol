@@ -6,15 +6,30 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/08 22:17:45 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/09 16:47:19 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "fractol.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-int	mouse_funct(int mouseclick, int x, int y, t_env *env)
+int	move_julia(int x, int y, t_env *env)
+{
+	x = y;
+	env->c_r = 0.285;//(double)x / 100;
+	env->c_i = 0.01;//(double)y / 100;
+//	if (mouseclick == 1 || mouseclick == 4)
+//		env->zoom++;
+//	if (mouseclick == 2 || mouseclick == 5)
+//		env->zoom--;
+	julia(*env);
+	mlx_put_image_to_window(env->mlx, env->win, env->img, 1, 1);
+	return (1);
+}
+
+int	mouse_mandel(int mouseclick, int x, int y, t_env *env)
 {
 	int	i;
 	int	j;
@@ -25,6 +40,7 @@ int	mouse_funct(int mouseclick, int x, int y, t_env *env)
 		env->zoom++;
 	if (mouseclick == 2 || mouseclick == 5)
 		env->zoom--;
+	mandelbrot(*env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 1, 1);
 	return (1);
 }

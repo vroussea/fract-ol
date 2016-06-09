@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/08 22:16:30 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/09 16:33:48 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,19 @@ typedef	struct	s_env
 	char	*meml;
 	int		sizel;
 	int		zoom;
+	double	c_r;
+	double	c_i;
+	double	x1;
+	double	y1;
+	int		col;
+	int		i_max;
 }				t_env;
 
 int				quit_funct(t_env *env);
 int				key_funct(int keycode, t_env *env);
-int				mouse_funct(int mouseclick, int x, int y, t_env *env);
+int				mouse_mandel(int mouseclick, int x, int y, t_env *env);
+int				move_julia(int x, int y, t_env *env);
+void			julia(t_env env);
 void			mandelbrot(t_env env);
 void			pixel(int x, int y, int col, t_env env);
 
