@@ -6,24 +6,25 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/06/09 16:35:46 by vroussea         ###   ########.fr        #
+#    Updated: 2016/06/10 21:57:49 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		fractol
 INCLUDES =	libft/libft.a
+HEADER =	fractol.h
 MKINC =		make -C libft/
 MLX =		-lmlx -framework OpenGL -framework AppKit
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
-SOURCES =	main.c event.c mandelbrot.c julia.c
+SOURCES =	main.c event.c mandelbrot.c julia.c draw.c
 OBJS =		$(SOURCES:.c=.o)
 
 all :		$(NAME)
 fonly :
 			$(CC) $(CFLAGS) -c $(SOURCES)
 			$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCLUDES) $(MLX)
-$(NAME) :
+$(NAME) :	$(OBJS) $(HEADER) Makefile
 			$(MKINC)
 			$(CC) $(CFLAGS) -c $(SOURCES)
 			$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCLUDES) $(MLX)

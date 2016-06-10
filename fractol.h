@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/09 16:33:48 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/10 17:22:55 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int				move_julia(int x, int y, t_env *env);
 void			julia(t_env env);
 void			mandelbrot(t_env env);
 void			pixel(int x, int y, int col, t_env env);
+int				color(int i, int i_max);
 
 #endif

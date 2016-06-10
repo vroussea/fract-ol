@@ -6,18 +6,12 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/09 16:35:34 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/10 17:15:24 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <mlx.h>
-
-void		pixel(int x, int y, int col, t_env env)
-{
-	if (x > 0 && x < env.sx && y > 0 && y < env.sy)
-		ft_memcpy(&env.meml[(x - 1) * 4 + (y - 1) * env.sizel], &col, 4);
-}
 
 static void	juloop(t_env env)
 {
@@ -61,7 +55,7 @@ int			main(int argc, char **argv)
 		ft_putendl("Accepted Parameters :\n - Mandelbrot\n - Julia\n - Autre");
 	else
 	{
-		env.col = 0xFFFFFF;
+		env.col = 0x000000;
 		env.zoom = 250;
 		env.meml = mlx_get_data_addr(env.img, &bpp, &(env.sizel), &edan);
 		if (ft_strcmp(argv[1], "Mandelbrot") == 0)
