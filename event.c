@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/09 16:47:19 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/11 21:22:14 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	mouse_mandel(int mouseclick, int x, int y, t_env *env)
 	i = x;
 	j = y;
 	if (mouseclick == 1 || mouseclick == 4)
-		env->zoom++;
+		env->zoom += 5;
 	if (mouseclick == 2 || mouseclick == 5)
-		env->zoom--;
+		env->zoom -= 5;
 	mandelbrot(*env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 1, 1);
 	return (1);

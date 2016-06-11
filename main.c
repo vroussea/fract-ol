@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/10 17:15:24 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/11 18:37:12 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 static void	juloop(t_env env)
 {
 	env.i_max = 150;
-	env.x1 = -1;
-	env.y1 = -1.2;
+	env.x1 = -1.5;
+	env.y1 = -1.5;
+	env.c_r = 0.285;
+	env.c_i = 0.01;
 	julia(env);
 	mlx_put_image_to_window(env.mlx, env.win, env.img, 1, 1);
 	mlx_hook(env.win, 2, 0, key_funct, &env);
