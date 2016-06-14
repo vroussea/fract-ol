@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/11 18:37:12 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/14 21:42:05 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 static void	juloop(t_env env)
 {
-	env.i_max = 150;
+	env.col = 0x000000;
+	env.i_max = 50;
 	env.x1 = -1.5;
 	env.y1 = -1.5;
 	env.c_r = 0.285;
@@ -28,8 +29,23 @@ static void	juloop(t_env env)
 	mlx_loop(env.mlx);
 }
 
+static void	burningloop(t_env env)
+{
+	env.col = 0x000000;
+	env.i_max = 70;
+	env.x1 = -2.1;
+	env.y1 = -1.2;
+	burningship(env);
+	mlx_put_image_to_window(env.mlx, env.win, env.img, 1, 1);
+	mlx_hook(env.win, 2, 0, key_funct, &env);
+	mlx_hook(env.win, 17, 0, quit_funct, &env);
+	mlx_hook(env.win, 4, 0, mouse_burning, &env);
+	mlx_loop(env.mlx);
+}
+
 static void	mandeloop(t_env env)
 {
+	env.col = 0x000000;
 	env.i_max = 50;
 	env.x1 = -2.1;
 	env.y1 = -1.2;
@@ -41,6 +57,12 @@ static void	mandeloop(t_env env)
 	mlx_loop(env.mlx);
 }
 
+static void	param(void)
+{
+	ft_putendl("Accepted Parameters :");
+	ft_putendl(" - Mandelbrot\n - Julia\n - Burningship");
+}
+
 int			main(int argc, char **argv)
 {
 	t_env	env;
@@ -50,22 +72,22 @@ int			main(int argc, char **argv)
 	env.sx = 750;
 	env.sy = 650;
 	if (argc < 2 || (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
-		ft_strcmp(argv[1], "Julia") != 0 && ft_strcmp(argv[1], "Autre") != 0) ||
+		ft_strcmp(argv[1], "Julia") != 0 &&
+		ft_strcmp(argv[1], "Burningship") != 0) ||
 		!(env.mlx = mlx_init()) ||
 		!(env.win = mlx_new_window(env.mlx, env.sx, env.sy, "Fract'ol")) ||
 		!(env.img = mlx_new_image(env.mlx, env.sx, env.sy)))
-		ft_putendl("Accepted Parameters :\n - Mandelbrot\n - Julia\n - Autre");
+		param();
 	else
 	{
-		env.col = 0x000000;
 		env.zoom = 250;
 		env.meml = mlx_get_data_addr(env.img, &bpp, &(env.sizel), &edan);
 		if (ft_strcmp(argv[1], "Mandelbrot") == 0)
 			mandeloop(env);
 		if (ft_strcmp(argv[1], "Julia") == 0)
 			juloop(env);
-//		if (ft_strcmp(argv[1], "Autre") == 0)
-//			loop(env, argv[1]);
+		if (ft_strcmp(argv[1], "Burningship") == 0)
+			burningloop(env);
 	}
 	return (0);
 }

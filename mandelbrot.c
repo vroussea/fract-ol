@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 19:50:57 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/10 18:26:51 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/14 22:33:21 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	iterate(double x, double y, t_env env)
 		z_i = 2 * tmp * z_i + env.c_i;
 		i++;
 	}
-	pixel(x, y, (i == env.i_max ? 0 : color(i, env.i_max)), env);
+	pixel(x, y, (i == env.i_max ? 0x400000 : color(i, env.i_max)), env);
 }
 
 void		mandelbrot(t_env env)

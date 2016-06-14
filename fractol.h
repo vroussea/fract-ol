@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/11 18:34:11 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/14 21:38:09 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ typedef	struct	s_env
 int				quit_funct(t_env *env);
 int				key_funct(int keycode, t_env *env);
 int				mouse_mandel(int mouseclick, int x, int y, t_env *env);
+int				mouse_burning(int mouseclick, int x, int y, t_env *env);
 int				move_julia(int x, int y, t_env *env);
 void			julia(t_env env);
 void			mandelbrot(t_env env);
+void			burningship(t_env env);
 void			pixel(int x, int y, int col, t_env env);
 int				color(int i, int i_max);
 
