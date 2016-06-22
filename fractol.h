@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/16 18:25:25 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/22 22:46:47 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ typedef	struct	s_env
 	void	*img;
 	char	*meml;
 	int		sizel;
-	int		zoom;
-	int		dx;
-	int		dy;
+	double	zoom;
+	double	rat_x;
+	double	rat_y;
 	double	c_r;
 	double	c_i;
 	double	x1;
 	double	y1;
+	double	x_min;
+	double	y_min;
 	int		i_max;
 }				t_env;
 

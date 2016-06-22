@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/16 20:10:48 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/06/22 23:46:53 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	caller(t_env env, char *arg)
 	int		bpp;
 	int		edan;
 
-	env.zoom = 250;
+	env.zoom = 1;
 	env.meml = mlx_get_data_addr(env.img, &bpp, &(env.sizel), &edan);
 	if (ft_strcmp(arg, "Mandelbrot") == 0)
 		mandeloop(env);
@@ -60,8 +60,8 @@ int			main(int argc, char **argv)
 
 	env.sx = 750;
 	env.sy = 650;
-	env.dx = 0;
-	env.dy = 0;
+	env.rat_x = 1;
+	env.rat_y = 1;
 	if (argc < 2 || (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
 		ft_strcmp(argv[1], "Julia") != 0 &&
 		ft_strcmp(argv[1], "Fractal") != 0 &&
