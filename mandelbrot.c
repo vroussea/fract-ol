@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 19:50:57 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/22 23:45:34 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/17 16:33:53 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,18 @@ static void	iterate(int x, int y, t_env env)
 {
 	int	i;
 	double	tmp;
-	double	z_r;
-	double	z_i;
+	double	z[2];
 
-	z_r = 0;
-	z_i = 0;
-	env.c_r = env.rat_x / (env.zoom * 250) + env.x1;
-	env.c_i = env.rat_y / (env.zoom * 250) + env.y1;
+	z[0] = 0;
+	z[1] = 0;
+	env.pt[0] = env.rat_x / (env.zoom * 250) + env.x1;
+	env.pt[1] = env.rat_y / (env.zoom * 250) + env.y1;
 	i = 0;
-	while (z_r * z_r + z_i * z_i < 4 && i < env.i_max) 
+	while (z[0] * z[0] + z[1] * z[1] < 4 && i < env.i_max) 
 	{
-		tmp = z_r;
-		z_r = z_r * z_r - z_i * z_i + env.c_r;
-		z_i = 2 * tmp * z_i + env.c_i;
+		tmp = z[0];
+		z[0] = z[0] * z[0] - z[1] * z[1] + env.pt[0];
+		z[1] = 2 * tmp * z[1] + env.pt[1];
 		i++;
 	}
 	pixel(x, y, (i == env.i_max ? 0 : color(i, env.i_max)), env);
@@ -78,34 +77,31 @@ void		mandelbrot(t_env env)
 {
 	int		x;
 	int		y;
-	double	x_max;
-	double	y_max;
+	double	x_arc[2];
+	double	y_arc[2];
+	double	new_size[2];
 
 	x = 0;
-
-	env.x_min = (env.sx - (env.sx / env.zoom)) * env.rat_x;
-	env.y_min = (env.sy - (env.sy / env.zoom)) * env.rat_y;
-	x_max = env.sx - ((env.sx - (env.sx * env.rat_x)) / env.zoom);//env.rat_x + (env.sx / env.zoom);
-	y_max = env.sy - ((env.sy - (env.sy * env.rat_y)) / env.zoom);//env.rat_y + (env.sy / env.zoom);
-	printf("x max : %f x min : %f rat x : %f zm : %f sx : %d\n", x_max, env.x_min, env.rat_x, env.zoom, env.sx);
-	printf("y max : %f y min : %f rat y : %f zm : %f sy : %d\n", y_max, env.y_min, env.rat_y, env.zoom, env.sy);
-	env.rat_x = env.x_min;
+	new_size[0] = env.sx / env.zoom;
+	new_size[1] = env.sy / env.zoom;
+	x_arc[0] = new_size[0] * env.rat_x;
+	y_arc[0] = new_size[1] * env.rat_y;
+	x_arc[1] = x_arc[0] + new_size[0];
+	y_arc[1] = y_arc[0] + new_size[1];
+	env.rat_x = x_arc[0];
 	while (x < env.sx)
 	{
 		y = 0;
-		env.rat_y = env.y_min;
+		env.rat_y = y_arc[0];
 		while (y < env.sy)
 		{
 			iterate(x, y, env);
-			env.rat_y += (y_max - env.y_min) / env.sy;
+			env.rat_y += (y_arc[1] - y_arc[0]) / env.sy;
 			y++;
 		}
-		if (x == 0)
-			printf("nb iteration en y : %d\n", y);
-		env.rat_x += (x_max - env.x_min) / env.sx;
+		env.rat_x += (x_arc[1] - x_arc[0]) / env.sx;
 		x++;
 	}
-	printf("nb iteration en x : %d\n", x);
 }
 
 void		mandeloop(t_env env)

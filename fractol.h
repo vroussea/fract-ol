@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/06/22 22:46:47 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/17 16:31:57 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ typedef	struct	s_env
 	double	zoom;
 	double	rat_x;
 	double	rat_y;
-	double	c_r;
-	double	c_i;
 	double	x1;
 	double	y1;
-	double	x_min;
-	double	y_min;
+	double	pt[2];
 	int		i_max;
 }				t_env;
 
