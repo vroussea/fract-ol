@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/18 17:55:32 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/19 20:04:18 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef	struct	s_env
 	double	y1;
 	double	x_arc[2];
 	double	y_arc[2];
+	double	old[2];
 	double	pt[2];
 	int		i_max;
 }				t_env;

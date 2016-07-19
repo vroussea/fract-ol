@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/18 19:17:28 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/19 20:04:25 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	caller(t_env env, char *arg)
 	env.y_arc[1] = env.sy;
 	env.rat_x = 0;
 	env.rat_y = 0;
+	env.old[0] = env.sx;
+	env.old[1] = env.sy;
 	env.meml = mlx_get_data_addr(env.img, &bpp, &(env.sizel), &edan);
 	if (ft_strcmp(arg, "Mandelbrot") == 0)
 		mandeloop(env);

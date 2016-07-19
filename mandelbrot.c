@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 19:50:57 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/18 21:21:37 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/19 20:04:34 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int			mouse_mandel(int mouseclick, int x, int y, t_env *env)
 	new_size[0] = env->sx / env->zoom;
 	new_size[1] = env->sy / env->zoom;
 	printf("min x avant : %f | min y avant : %f\n", env->x_arc[0], env->y_arc[0]);
-	env->x_arc[0] = (env->sx - new_size[0]) * env->rat_x;
-	env->y_arc[0] = (env->sy - new_size[1]) * env->rat_y;
+	env->x_arc[0] = env->x_arc[0] + ((env->old[0] - new_size[0]) * env->rat_x);
+	env->y_arc[0] = env->y_arc[0] + ((env->old[1] - new_size[1]) * env->rat_y);
 	printf("rat x : %f | rat y : %f\n", env->rat_x, env->rat_y);
 	printf("size : %f | size : %f\n", new_size[0], new_size[1]);
 	printf("size* rat x : %f | size* rat y : %f\n", (env->sx - new_size[0]) * env->rat_x, (env->sy - new_size[1]) * env->rat_y);
