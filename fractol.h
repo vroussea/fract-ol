@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/19 20:04:18 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/21 21:44:09 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef	struct	s_env
 	double	y1;
 	double	x_arc[2];
 	double	y_arc[2];
-	double	old[2];
 	double	pt[2];
 	int		i_max;
 }				t_env;
@@ -42,16 +41,14 @@ int				mouse_mandel(int mouseclick, int x, int y, t_env *env);
 int				mouse_burning(int mouseclick, int x, int y, t_env *env);
 int				move_julia(int x, int y, t_env *env);
 int				move_fract(int x, int y, t_env *env);
-void			julia(t_env env);
-void			mandelbrot(t_env env);
-void			burningship(t_env env);
-void			fract(t_env env);
+void			julia(double x, double y, t_env env);
+void			mandelbrot(double x, double y, t_env env);
+void			burningship(double x, double y, t_env env);
+void			fract(double x, double y, t_env env);
 void			pixel(int x, int y, int col, t_env env);
 int				color(int i, int i_max);
-void			juloop(t_env env);
-void			mandeloop(t_env env);
-void			burningloop(t_env env);
-void			fractloop(t_env env);
+void			iterate(t_env env);
+void			zoom(t_env env);
 double			absol(double val);
 
 #endif

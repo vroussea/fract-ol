@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/19 20:04:25 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/21 20:18:02 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,46 @@
 #include <mlx.h>
 #include <stdlib.h>
 
-int	key_funct(int keycode, t_env *env)
-{
-	if (keycode == 53)
-		quit_funct(env);
-	return (0);
-}
-
-int	quit_funct(t_env *env)
-{
-	mlx_destroy_image(env->mlx, env->img);
-	mlx_destroy_window(env->mlx, env->win);
-	ft_putendl("Program Closed");
-	exit(0);
-	return (1);
-}
-
-double	absol(double val)
-{
-	if (val < 0)
-		val = val * (-1);
-	return (val);
-}
-
 static void	caller(t_env env, char *arg)
+{
+	if (ft_strcmp(arg, "Mandelbrot") == 0 || ft_strcmp(arg, "Burningship") == 0)
+	{
+		env.x1 = -2.1;
+		env.y1 = -1.2;
+		if (ft_strcmp(arg, "Mandelbrot") == 0)
+			env.fract = 0;
+		if (ft_strcmp(arg, "Burningship") == 0)
+			env.fract = 2;
+	}
+	if (ft_strcmp(arg, "Julia") == 0 || ft_strcmp(arg, "Fractal") == 0)
+	{
+		env.x1 = -1.5;
+		env.y1 = -1.5;
+		if (ft_strcmp(arg, "Julia") == 0)
+			env.fract = 1;
+		if (ft_strcmp(arg, "Fractal") == 0)
+			env.fract = 2;
+	}
+	mlx_hook(env.win, 6, 0, motion_funct, &env);
+	mlx_hook(env.win, 4, 0, zoom_funct, &env);
+	mlx_hook(env.win, 2, 0, key_funct, &env);
+	mlx_hook(env.win, 17, 0, quit_funct, &env);
+	mlx_loop(env.mlx);
+}
+
+static void	init_val(t_env env, char *arg)
 {
 	int		bpp;
 	int		edan;
 
+	env.sx = 750;
+	env.sy = 650;
+	env.rat_x = 1;
+	env.rat_y = 1;
 	env.zoom = 1;
+	env.pt[0] = 0.285;
+	env.pt[1] = 0.01;
+	env.i_max = 50;
 	env.x_arc[0] = 0;
 	env.x_arc[1] = env.sx;
 	env.y_arc[0] = 0;
@@ -52,24 +63,13 @@ static void	caller(t_env env, char *arg)
 	env.old[0] = env.sx;
 	env.old[1] = env.sy;
 	env.meml = mlx_get_data_addr(env.img, &bpp, &(env.sizel), &edan);
-	if (ft_strcmp(arg, "Mandelbrot") == 0)
-		mandeloop(env);
-	if (ft_strcmp(arg, "Julia") == 0)
-		juloop(env);
-	if (ft_strcmp(arg, "Burningship") == 0)
-		burningloop(env);
-	if (ft_strcmp(arg, "Fractal") == 0)
-		fractloop(env);
+	caller(env, arg);
 }
 
 int			main(int argc, char **argv)
 {
 	t_env	env;
 
-	env.sx = 750;
-	env.sy = 650;
-	env.rat_x = 1;
-	env.rat_y = 1;
 	if (argc < 2 || (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
 		ft_strcmp(argv[1], "Julia") != 0 &&
 		ft_strcmp(argv[1], "Fractal") != 0 &&
@@ -82,6 +82,6 @@ int			main(int argc, char **argv)
 		ft_putendl(" - Mandelbrot\n - Julia\n - Burningship\n - Fractal");
 	}
 	else
-		caller(env, argv[1]);
+		init_val(env, argv[1]);
 	return (0);
 }

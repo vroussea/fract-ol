@@ -6,23 +6,23 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 21:28:33 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/17 18:29:07 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/21 17:41:19 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <mlx.h>
 
-int	move_julia(int x, int y, t_env *env)
+/*int	move_julia(int x, int y, t_env *env)
 {
 	env->pt[0] = (double)x / 1000;
 	env->pt[1] = (double)y / 1000;
 	julia(*env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 1, 1);
 	return (1);
-}
+}*/
 
-static void	iterate(double x, double y, t_env env)
+void	julia_pixel(double x, double y, t_env env)
 {
 	int		i;
 	double	tmp;
