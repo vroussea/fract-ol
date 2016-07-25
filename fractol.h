@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/21 21:44:09 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/25 19:46:48 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ typedef	struct	s_env
 	int		sy;
 	void	*img;
 	char	*meml;
+	int		fract;
 	int		sizel;
 	double	zoom;
 	double	rat_x;
 	double	rat_y;
 	double	x1;
 	double	y1;
+	double	old[2];
 	double	x_arc[2];
 	double	y_arc[2];
 	double	pt[2];
@@ -37,18 +39,16 @@ typedef	struct	s_env
 
 int				quit_funct(t_env *env);
 int				key_funct(int keycode, t_env *env);
-int				mouse_mandel(int mouseclick, int x, int y, t_env *env);
-int				mouse_burning(int mouseclick, int x, int y, t_env *env);
-int				move_julia(int x, int y, t_env *env);
-int				move_fract(int x, int y, t_env *env);
-void			julia(double x, double y, t_env env);
-void			mandelbrot(double x, double y, t_env env);
-void			burningship(double x, double y, t_env env);
-void			fract(double x, double y, t_env env);
-void			pixel(int x, int y, int col, t_env env);
+int				motion_funct(int x, int y, t_env *env);
+int				zoom_funct(int mouseclick, int x, int y, t_env *env);
+void			zoom(t_env *env);
+void			julia(int x, int y, t_env *env);
+void			mandelbrot(int x, int y, t_env *env);
+void			burning(int x, int y, t_env *env);
+void			fractal(int x, int y, t_env *env);
+void			pixel(int x, int y, int col, t_env *env);
 int				color(int i, int i_max);
-void			iterate(t_env env);
-void			zoom(t_env env);
+void			iterate(t_env *env);
 double			absol(double val);
 
 #endif
