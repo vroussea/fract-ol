@@ -45,10 +45,4 @@ void		iterate(t_env *env)
 		x++;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 1, 1);
-/*	mlx_destroy_image(env->mlx, env->img);	
-	if(!(mlx_new_image(env->mlx, env->sx, env->sy)))
-	{
-		ft_putendl("ERROR memory !");
-		quit_funct(env);
-	}*/
 }

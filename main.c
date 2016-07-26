@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/25 19:50:55 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/26 18:39:12 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ static void	init_val(t_env *env, char *arg)
 	int		bpp;
 	int		edan;
 
-	env->sx = 750;
-	env->sy = 650;
 	env->rat_x = 1;
 	env->rat_y = 1;
 	env->zoom = 1;
@@ -72,6 +70,8 @@ int			main(int argc, char **argv)
 	t_env	*env;
 
 	env = (t_env *)ft_memalloc(sizeof(t_env));
+	env->sx = 750;
+	env->sy = 650;
 	if (argc < 2 || (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
 		ft_strcmp(argv[1], "Julia") != 0 &&
 		ft_strcmp(argv[1], "Fractal") != 0 &&

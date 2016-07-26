@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 16:42:12 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/25 19:50:39 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/26 18:17:03 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	mandelbrot(int x, int y, t_env *env)
 {
+//	ft_putendl("test1");
 	int		i;
 	double	tmp;
 	double	z[2];
@@ -31,6 +32,7 @@ void	mandelbrot(int x, int y, t_env *env)
 		i++;
 	}
 	pixel(x, y, (i == env->i_max ? 0 : color(i, env->i_max)), env);
+//	ft_putendl("test2");
 }
 
 void	burning(int x, int y, t_env *env)
