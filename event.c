@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/26 18:38:52 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/26 19:19:04 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	zoom_funct(int mouseclick, int x, int y, t_env *env)
 			env->zoom -= 0.01;
 		else return (0);
 		zoom(env);
-		iterate(env);
+		fractals(env);
 	}
 	return (1);
 }
@@ -35,7 +35,7 @@ int	key_funct(int keycode, t_env *env)
 {
 	if (keycode == 53)
 		quit_funct(env);
-	iterate(env);
+	fractals(env);
 	return (1);
 }
 
@@ -43,7 +43,7 @@ int	motion_funct(int x, int y, t_env *env)
 {
 	env->pt[0] = (double)x / 1000;
 	env->pt[1] = (double)y / 1000;
-	iterate(env);
+	fractals(env);
 	return (1);
 }
 

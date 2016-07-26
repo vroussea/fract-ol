@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/26 18:39:12 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/26 19:18:44 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	caller(t_env *env, char *arg)
 	mlx_hook(env->win, 4, 0, zoom_funct, env);
 	mlx_hook(env->win, 2, 0, key_funct, env);
 	mlx_hook(env->win, 17, 0, quit_funct, env);
-	iterate(env);
+	fractals(env);
 	mlx_loop(env->mlx);
 }
 
