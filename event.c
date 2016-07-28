@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/28 17:23:34 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/28 18:06:11 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ int	key_funct(int keycode, t_env *env)
 		env->move[1] += 5;
 	if (keycode == 125)
 		env->move[1] -= 5;
+	if (keycode == 69)
+		env->i_max += 10;
+	if (keycode == 78)
+		env->i_max -= 10;
 	fractals(env);
 	return (1);
 }
