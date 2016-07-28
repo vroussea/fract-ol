@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/26 19:09:06 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/26 19:19:25 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/28 17:20:39 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static void	iterate(void (*funct)(int, int, t_env *), t_env *env)
 {
 	int		x;
 	int		y;
-	
-	env->rat_x = env->x_arc[0];
+
+	env->rat_x = env->x_arc[0] + env->move[0];
 	x = 0;
 	while (x < env->sx)
 	{
 		y = 0;
-		env->rat_y = env->y_arc[0];
+		env->rat_y = env->y_arc[0] + env->move[1];
 		while (y < env->sy)
-		{	
+		{
 			funct(x, y, env);
 			env->rat_y += (env->y_arc[1] - env->y_arc[0]) / env->sy;
 			y++;

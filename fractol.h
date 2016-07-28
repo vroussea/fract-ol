@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/26 19:18:33 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/07/28 17:14:38 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef	struct	s_env
 	double	rat_y;
 	double	x1;
 	double	y1;
-	double	old[2];
+	double	move[2];
 	double	x_arc[2];
 	double	y_arc[2];
 	double	pt[2];
