@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/28 17:15:27 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/08/15 19:53:35 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	init_val(t_env *env, char *arg)
 
 	env->rat_x = 1;
 	env->rat_y = 1;
-	env->zoom = 1;
+	env->zoom = env->sx / 750;
 	env->pt[0] = 0.285;
 	env->pt[1] = 0.01;
 	env->i_max = 50;
@@ -59,8 +59,10 @@ static void	init_val(t_env *env, char *arg)
 	env->y_arc[1] = env->sy;
 	env->rat_x = 0;
 	env->rat_y = 0;
-	env->move[0] = 0;
-	env->move[1] = 1;
+	env->pos_x = 0;
+	env->pos_y = 0;
+	env->move[0] = env->x1;
+	env->move[1] = env->y1;
 	env->meml = mlx_get_data_addr(env->img, &bpp, &(env->sizel), &edan);
 	caller(env, arg);
 }
@@ -71,7 +73,7 @@ int			main(int argc, char **argv)
 
 	env = (t_env *)ft_memalloc(sizeof(t_env));
 	env->sx = 750;
-	env->sy = 650;
+	env->sy = 600;
 	if (argc < 2 || (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
 		ft_strcmp(argv[1], "Julia") != 0 &&
 		ft_strcmp(argv[1], "Fractal") != 0 &&

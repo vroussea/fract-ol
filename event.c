@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/07/28 18:06:11 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/08/15 19:16:28 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ int	zoom_funct(int mouseclick, int x, int y, t_env *env)
 	{
 		env->rat_x = (double)x / (double)env->sx;
 		env->rat_y = (double)y / (double)env->sy;
+		env->pos_x = (double)x;
+		env->pos_y = (double)y;
 		if (mouseclick == 1 || mouseclick == 4)
-			env->zoom += 0.01;
+			env->zoom *= 1.3;
 		else
 		{
 			if ((mouseclick == 2 || mouseclick == 5) && env->zoom > 0.010)
-				env->zoom -= 0.01;
+				env->zoom /= 1.3;
 			else
 				return (0);
 		}
@@ -40,14 +42,18 @@ int	key_funct(int keycode, t_env *env)
 {
 	if (keycode == 53)
 		quit_funct(env);
+	if (keycode == 116)
+		env->i_max += 10;
+	if (keycode == 121)
+		(env->i_max > 0 ? env->i_max -= 10 : 0);
 	if (keycode == 124)
-		env->move[0] -= 5;
+		env->move[0] -= 0.1;
 	if (keycode == 123)
-		env->move[0] += 5;
+		env->move[0] += 0.1;
 	if (keycode == 126)
-		env->move[1] += 5;
+		env->move[1] += 0.1;
 	if (keycode == 125)
-		env->move[1] -= 5;
+		env->move[1] -= 0.1;
 	if (keycode == 69)
 		env->i_max += 10;
 	if (keycode == 78)
