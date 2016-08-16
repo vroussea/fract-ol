@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/15 19:53:35 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/08/16 18:43:16 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,10 @@ static void	init_val(t_env *env, char *arg)
 	int		bpp;
 	int		edan;
 
+	env->colmod = 135000;
 	env->rat_x = 1;
 	env->rat_y = 1;
-	env->zoom = env->sx / 750;
+	env->zoom = 250;
 	env->pt[0] = 0.285;
 	env->pt[1] = 0.01;
 	env->i_max = 50;
