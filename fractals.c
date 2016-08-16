@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/26 19:09:06 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/16 18:46:03 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/08/16 23:17:52 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	iterate(void (*funct)(int, int, t_env *), t_env *env)
 		x++;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 1, 1);
+	text(env);
 }
 
 void		fractals(t_env *env)

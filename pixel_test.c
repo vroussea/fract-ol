@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 16:42:12 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/16 19:54:29 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/08/16 23:17:38 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	mandelbrot(int x, int y, t_env *env)
 
 	z[0] = 0;
 	z[1] = 0;
-	env->pt[0] = (x - env->sx / 2) / env->zoom + env->move[0];
-	env->pt[1] = (y - env->sy / 2) / env->zoom + env->move[1];
+	env->pt[0] = ((double)x - env->sx / 2) / env->zoom + env->move[0];
+	env->pt[1] = ((double)y - env->sy / 2) / env->zoom + env->move[1];
 	i = 0;
 	col = 0x00FFFFFF;
 	while (z[0] * z[0] + z[1] * z[1] < 4 && i < env->i_max)
@@ -47,8 +47,8 @@ void	burning(int x, int y, t_env *env)
 
 	z[0] = 0;
 	z[1] = 0;
-	env->pt[0] = env->rat_x / env->zoom + env->x1 + env->move[0];
-	env->pt[1] = env->rat_y / env->zoom + env->y1 + env->move[1];
+	env->pt[0] = ((double)x - env->sx / 2) / env->zoom + env->move[0];
+	env->pt[1] = ((double)y - env->sy / 2) / env->zoom + env->move[1];
 	i = 0;
 	col = 0x00FFFFFF;
 	while (z[0] * z[0] + z[1] * z[1] < 4 && i < env->i_max)
@@ -71,8 +71,8 @@ void	julia(int x, int y, t_env *env)
 	double	z[2];
 	int		col;
 
-	z[0] = (x - env->sx / 2) / env->zoom + env->move[0];
-	z[1] = (y - env->sy / 2) / env->zoom + env->move[1];
+	z[0] = ((double)x - env->sx / 2) / env->zoom + env->move[0];
+	z[1] = ((double)y - env->sy / 2) / env->zoom + env->move[1];
 	i = 0;
 	col = 0x00FFFFFF;
 	while (z[0] * z[0] + z[1] * z[1] < 4 && i < env->i_max)
@@ -95,8 +95,8 @@ void	fractal(int x, int y, t_env *env)
 	double	z[2];
 	int		col;
 
-	z[0] = (x - env->sx / 2) / env->zoom + env->move[0] / env->zoom;
-	z[1] = (y - env->sy / 2) / env->zoom + env->move[1] / env->zoom;
+	z[0] = ((double)x - env->sx / 2) / env->zoom + env->move[0];
+	z[1] = ((double)y - env->sy / 2) / env->zoom + env->move[1];
 	i = 0;
 	col = 0x00FFFFFF;
 	while (z[0] * z[0] + z[1] * z[1] < 4 && i < env->i_max)

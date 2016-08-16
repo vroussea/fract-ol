@@ -6,16 +6,17 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 18:40:34 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/16 19:42:30 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/08/16 22:38:41 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <mlx.h>
 
-void	zoom(t_env *env)
+void	text(t_env *env)
 {
-	env->move[0] += (env->sx); //- new_size[0]) * env->rat_x;
-	env->move[1] += (env->sy);// - new_size[1]) * env->rat_y;
+	mlx_string_put(env->mlx, env->win, env->sx / 2, env->sy / 2, 0xFFFFFF, "mdr");
+	mlx_string_put(env->mlx, env->win, env->sx / 2, env->sy / 2, 0xFFFFFF, "lol");
 }
 
 double	absol(double val)
