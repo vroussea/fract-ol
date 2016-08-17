@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/16 22:33:12 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/08/17 20:43:35 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@
 
 static void	caller(t_env *env, char *arg)
 {
-	if (ft_strcmp(arg, "Mandelbrot") == 0 || ft_strcmp(arg, "Burningship") == 0)
+	if (ft_strcmp(arg, "Mandelbrot") == 0 ||
+		ft_strcmp(arg, "Burningship") == 0 ||
+		ft_strcmp(arg, "Autre") == 0)
+		
 	{
 		env->x1 = -2.1;
 		env->y1 = -1.2;
-		if (ft_strcmp(arg, "Mandelbrot") == 0)
-			env->fract = 0;
-		if (ft_strcmp(arg, "Burningship") == 0)
-			env->fract = 2;
 	}
-	if (ft_strcmp(arg, "Julia") == 0 || ft_strcmp(arg, "Fractal") == 0)
-	{
-		env->x1 = -1.5;
-		env->y1 = -1.5;
-		if (ft_strcmp(arg, "Julia") == 0)
-			env->fract = 1;
-		if (ft_strcmp(arg, "Fractal") == 0)
-			env->fract = 3;
-	}
+	if (ft_strcmp(arg, "Mandelbrot") == 0)
+		env->fract = 0;
+	if (ft_strcmp(arg, "Burningship") == 0)
+		env->fract = 2;
+	if (ft_strcmp(arg, "Julia") == 0)
+		env->fract = 1;
+	if (ft_strcmp(arg, "Fractal") == 0)
+		env->fract = 3;
+	if (ft_strcmp(arg, "Autre") == 0)
+		env->fract = 4;
 	mlx_hook(env->win, 6, 0, motion_funct, env);
 	mlx_hook(env->win, 4, 0, zoom_funct, env);
 	mlx_hook(env->win, 2, 0, key_funct, env);
@@ -70,6 +70,7 @@ int			main(int argc, char **argv)
 	if (argc < 2 || (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
 		ft_strcmp(argv[1], "Julia") != 0 &&
 		ft_strcmp(argv[1], "Fractal") != 0 &&
+		ft_strcmp(argv[1], "Autre") != 0 &&
 		ft_strcmp(argv[1], "Burningship") != 0) ||
 		!(env->mlx = mlx_init()) ||
 		!(env->win = mlx_new_window(env->mlx, env->sx, env->sy, "Fract'ol")) ||
@@ -77,6 +78,7 @@ int			main(int argc, char **argv)
 	{
 		ft_putendl("Accepted Parameters :");
 		ft_putendl(" - Mandelbrot\n - Julia\n - Burningship\n - Fractal");
+		ft_putendl(" - Autre");
 	}
 	else
 		init_val(env, argv[1]);

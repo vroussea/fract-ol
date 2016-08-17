@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 18:40:34 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/17 19:24:43 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/08/17 20:41:35 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	text(t_env *env)
 	mlx_string_put(env->mlx, env->win, 11, 61, 0, "Iteration : page up down");
 	mlx_string_put(env->mlx, env->win, 10, 60, 0xDDDDDD,
 			"Iteration : page up down");
-	mlx_string_put(env->mlx, env->win, 11, 81, 0, "Color : + -*");
+	mlx_string_put(env->mlx, env->win, 11, 81, 0, "Color : + -");
 	mlx_string_put(env->mlx, env->win, 10, 80, 0xDDDDDD, "Color : + -");
 	mlx_string_put(env->mlx, env->win, 10, env->sy - 20, 0, "Color:");
 	mlx_string_put(env->mlx, env->win, 70, env->sy - 20, 0,
