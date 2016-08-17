@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/16 19:56:06 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/08/17 19:30:45 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,16 @@ int	zoom_funct(int mouseclick, int x, int y, t_env *env)
 	env->pos_x = (double)x;
 	env->pos_y = (double)y;
 	if (mouseclick == 1 || mouseclick == 4)
-	{
-		if (env->fract != 1 && env->fract != 3)
-		{
-			env->move[0] += (x - env->sx / 2) / (env->zoom / 1);
-			env->move[1] += (y - env->sy / 2) / (env->zoom / 1);
-		}
 		env->zoom *= 1.3;
-	}
 	else
 	{
-		if ((mouseclick == 2 || mouseclick == 5) && env->zoom > 0.010)
-		{
-			if (env->fract != 1 && env->fract != 3)
-			{
-				env->move[0] -= (x - env->sx / 2) / env->zoom;
-				env->move[1] -= (y - env->sy / 2) / env->zoom;
-			}
+		if ((mouseclick == 2 || mouseclick == 5))
 			env->zoom /= 1.3;
-		}
 		else
 			return (0);
 	}
+	env->move[0] += (x - env->sx / 2) / (env->zoom / 1);
+	env->move[1] += (y - env->sy / 2) / (env->zoom / 1);
 	fractals(env);
 	return (1);
 }
