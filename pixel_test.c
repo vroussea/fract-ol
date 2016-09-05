@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 16:42:12 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/17 21:04:19 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/05 22:35:57 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	mandelbrot(int x, int y, t_env *env)
 
 	z[0] = 0;
 	z[1] = 0;
-	ft_putendl("mdr");
 	env->pt[0] = ((double)x - env->sx / 2) / env->zoom + env->move[0];
 	env->pt[1] = ((double)y - env->sy / 2) / env->zoom + env->move[1];
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/17 20:36:34 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/05 22:40:45 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef	struct	s_env
 	int		pos_x;
 	int		pos_y;
 	int		colmod;
+	int		is_move;
+	int		is_indent;
 }				t_env;
 
 int				quit_funct(t_env *env);

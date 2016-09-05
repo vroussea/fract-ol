@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/17 19:30:45 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/05 23:02:08 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,28 @@ int	zoom_funct(int mouseclick, int x, int y, t_env *env)
 	env->pos_x = (double)x;
 	env->pos_y = (double)y;
 	if (mouseclick == 1 || mouseclick == 4)
-		env->zoom *= 1.3;
+	{
+		env->move[0] += (x - env->sx / 2) / env->zoom;
+		env->move[1] += (y - env->sy / 2) / env->zoom;
+		env->zoom *= 1.5;
+		env->move[0] -= (x - (env->sx / 2)) / env->zoom;
+		env->move[1] -= (y - (env->sy / 2)) / env->zoom;
+		if (env->is_indent == 0)
+			env->i_max += 10;
+	}
 	else
 	{
 		if ((mouseclick == 2 || mouseclick == 5))
-			env->zoom /= 1.3;
-		else
-			return (0);
+		{
+			env->move[0] += (x - env->sx / 2) / env->zoom;
+			env->move[1] += (y - env->sy / 2) / env->zoom;
+			env->zoom /= 1.5;
+			env->move[0] -= (x - (env->sx / 2)) / env->zoom;
+			env->move[1] -= (y - (env->sy / 2)) / env->zoom;
+			if (env->is_indent == 0)
+				env->i_max -= 10;
+		}
 	}
-	env->move[0] += (x - env->sx / 2) / (env->zoom / 1);
-	env->move[1] += (y - env->sy / 2) / (env->zoom / 1);
 	fractals(env);
 	return (1);
 }
@@ -54,14 +66,21 @@ int	key_funct(int keycode, t_env *env)
 		env->move[1] += 10 / env->zoom;
 	if (keycode == 125)
 		env->move[1] -= 10 / env->zoom;
+	if (keycode == 119)
+		env->is_move = (env->is_move == 1 ? 0 : 1);
+	if (keycode == 115)
+		env->is_indent = (env->is_indent == 1 ? 0 : 1);
 	fractals(env);
 	return (1);
 }
 
 int	motion_funct(int x, int y, t_env *env)
 {
-	env->pt[0] = (double)x / 1000;
-	env->pt[1] = (double)y / 1000;
+	if (env->is_move == 1)
+	{
+		env->pt[0] = (double)x / 1000;
+		env->pt[1] = (double)y / 1000;
+	}
 	fractals(env);
 	return (1);
 }

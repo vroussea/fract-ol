@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/17 20:43:35 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/05 22:56:26 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	caller(t_env *env, char *arg)
 	if (ft_strcmp(arg, "Mandelbrot") == 0 ||
 		ft_strcmp(arg, "Burningship") == 0 ||
 		ft_strcmp(arg, "Autre") == 0)
-		
 	{
 		env->x1 = -2.1;
 		env->y1 = -1.2;
@@ -54,6 +53,8 @@ static void	init_val(t_env *env, char *arg)
 	env->i_max = 50;
 	env->pos_x = 0;
 	env->pos_y = 0;
+	env->is_move = 1;
+	env->is_indent = 1;
 	env->move[0] = env->x1;
 	env->move[1] = env->y1;
 	env->meml = mlx_get_data_addr(env->img, &bpp, &(env->sizel), &edan);
