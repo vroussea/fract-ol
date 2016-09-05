@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 16:42:12 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/05 22:35:57 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/05 23:22:47 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	julia(int x, int y, t_env *env)
 	pixel(x, y, (i == env->i_max ? 0 : col), env);
 }
 
-void	fractal(int x, int y, t_env *env)
+void	julol(int x, int y, t_env *env)
 {
 	int		i;
 	double	tmp;
@@ -112,7 +112,7 @@ void	fractal(int x, int y, t_env *env)
 	pixel(x, y, (i == env->i_max ? 0 : col), env);
 }
 
-void	autre(int x, int y, t_env *env)
+void	mandeldeux(int x, int y, t_env *env)
 {
 	int		i;
 	double	tmp;

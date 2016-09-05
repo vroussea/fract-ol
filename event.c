@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 18:48:41 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/05 23:02:08 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/05 23:12:32 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,17 @@ int	zoom_funct(int mouseclick, int x, int y, t_env *env)
 		env->zoom *= 1.5;
 		env->move[0] -= (x - (env->sx / 2)) / env->zoom;
 		env->move[1] -= (y - (env->sy / 2)) / env->zoom;
-		if (env->is_indent == 0)
-			env->i_max += 10;
+		env->i_max = (env->is_indent == 0 ? env->i_max + 10 : env->i_max);
 	}
-	else
+	if ((mouseclick == 2 || mouseclick == 5))
 	{
-		if ((mouseclick == 2 || mouseclick == 5))
-		{
-			env->move[0] += (x - env->sx / 2) / env->zoom;
-			env->move[1] += (y - env->sy / 2) / env->zoom;
-			env->zoom /= 1.5;
-			env->move[0] -= (x - (env->sx / 2)) / env->zoom;
-			env->move[1] -= (y - (env->sy / 2)) / env->zoom;
-			if (env->is_indent == 0)
-				env->i_max -= 10;
-		}
+		env->move[0] += (x - env->sx / 2) / env->zoom;
+		env->move[1] += (y - env->sy / 2) / env->zoom;
+		env->zoom /= 1.5;
+		env->move[0] -= (x - (env->sx / 2)) / env->zoom;
+		env->move[1] -= (y - (env->sy / 2)) / env->zoom;
+		env->i_max = (env->is_indent == 0 && env->i_max > 30 ?
+				env->i_max - 10 : env->i_max);
 	}
 	fractals(env);
 	return (1);
@@ -58,14 +54,10 @@ int	key_funct(int keycode, t_env *env)
 		env->i_max += 10;
 	if (keycode == 121)
 		(env->i_max > 0 ? env->i_max -= 10 : 0);
-	if (keycode == 124)
-		env->move[0] -= 10 / env->zoom;
-	if (keycode == 123)
-		env->move[0] += 10 / env->zoom;
-	if (keycode == 126)
-		env->move[1] += 10 / env->zoom;
-	if (keycode == 125)
-		env->move[1] -= 10 / env->zoom;
+	if (keycode == 123 || keycode == 124)
+		env->move[0] += (keycode == 123 ? 10 / env->zoom : -(10 / env->zoom));
+	if (keycode == 126 || keycode == 125)
+		env->move[1] += (keycode == 126 ? 10 / env->zoom : -(10 / env->zoom));
 	if (keycode == 119)
 		env->is_move = (env->is_move == 1 ? 0 : 1);
 	if (keycode == 115)

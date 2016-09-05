@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/26 19:09:06 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/05 21:48:27 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/05 23:23:27 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void		fractals(t_env *env)
 	if (env->fract == 2)
 		funct = &burning;
 	if (env->fract == 3)
-		funct = &fractal;
+		funct = &julol;
 	if (env->fract == 4)
-		funct = &autre;
+		funct = &mandeldeux;
 	iterate(funct, env);
 }

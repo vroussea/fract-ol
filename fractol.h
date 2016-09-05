@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/05 22:40:45 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/05 23:23:05 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void			text(t_env *env);
 void			julia(int x, int y, t_env *env);
 void			mandelbrot(int x, int y, t_env *env);
 void			burning(int x, int y, t_env *env);
-void			fractal(int x, int y, t_env *env);
-void			autre(int x, int y, t_env *env);
+void			julol(int x, int y, t_env *env);
+void			mandeldeux(int x, int y, t_env *env);
 void			pixel(int x, int y, int col, t_env *env);
 int				color(int i, int i_max);
 void			fractals(t_env *env);

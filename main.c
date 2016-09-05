@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/05 22:56:26 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/05 23:21:33 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	caller(t_env *env, char *arg)
 		env->fract = 2;
 	if (ft_strcmp(arg, "Julia") == 0)
 		env->fract = 1;
-	if (ft_strcmp(arg, "Fractal") == 0)
+	if (ft_strcmp(arg, "Julol") == 0)
 		env->fract = 3;
-	if (ft_strcmp(arg, "Autre") == 0)
+	if (ft_strcmp(arg, "Mandeldeux") == 0)
 		env->fract = 4;
 	mlx_hook(env->win, 6, 0, motion_funct, env);
 	mlx_hook(env->win, 4, 0, zoom_funct, env);
@@ -70,16 +70,16 @@ int			main(int argc, char **argv)
 	env->sy = 600;
 	if (argc < 2 || (ft_strcmp(argv[1], "Mandelbrot") != 0 &&
 		ft_strcmp(argv[1], "Julia") != 0 &&
-		ft_strcmp(argv[1], "Fractal") != 0 &&
-		ft_strcmp(argv[1], "Autre") != 0 &&
+		ft_strcmp(argv[1], "Julol") != 0 &&
+		ft_strcmp(argv[1], "Mandeldeux") != 0 &&
 		ft_strcmp(argv[1], "Burningship") != 0) ||
 		!(env->mlx = mlx_init()) ||
 		!(env->win = mlx_new_window(env->mlx, env->sx, env->sy, "Fract'ol")) ||
 		!(env->img = mlx_new_image(env->mlx, env->sx, env->sy)))
 	{
 		ft_putendl("Accepted Parameters :");
-		ft_putendl(" - Mandelbrot\n - Julia\n - Burningship\n - Fractal");
-		ft_putendl(" - Autre");
+		ft_putendl(" - Mandelbrot\n - Julia\n - Burningship\n - Julol");
+		ft_putendl(" - Mandeldeux");
 	}
 	else
 		init_val(env, argv[1]);
