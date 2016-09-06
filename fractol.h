@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:44:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/05 23:23:05 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/06 19:30:55 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef	struct	s_env
 	int		colmod;
 	int		is_move;
 	int		is_indent;
+	int		is_text;
 }				t_env;
 
 int				quit_funct(t_env *env);
@@ -43,6 +44,8 @@ int				key_funct(int keycode, t_env *env);
 int				motion_funct(int x, int y, t_env *env);
 int				zoom_funct(int mouseclick, int x, int y, t_env *env);
 void			text(t_env *env);
+void			special_text(t_env *env);
+void			hud_text(t_env *env);
 void			julia(int x, int y, t_env *env);
 void			mandelbrot(int x, int y, t_env *env);
 void			burning(int x, int y, t_env *env);

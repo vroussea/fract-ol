@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 18:40:34 by vroussea          #+#    #+#             */
-/*   Updated: 2016/08/17 20:41:35 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/06 19:39:07 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,53 @@ void	text(t_env *env)
 			"Iterations:");
 	mlx_string_put(env->mlx, env->win, 121, env->sy - 41, 0xDDDDDD,
 			ft_itoa(env->i_max));
+}
+
+void	hud_text(t_env *env)
+{
+	if (env->is_text == 1)
+	{
+		mlx_string_put(env->mlx, env->win, env->sx - 151, env->sy - 21, 0,
+				"Hide HUD : Del");
+		mlx_string_put(env->mlx, env->win, env->sx - 150, env->sy - 20,
+				0xDDDDDD, "Hide HUD : Del");
+	}
+	else
+	{
+		mlx_string_put(env->mlx, env->win, env->sx - 151, env->sy - 21, 0,
+				"Show HUD : Del");
+		mlx_string_put(env->mlx, env->win, env->sx - 150, env->sy - 20,
+				0xDDDDDD, "Show HUD : Del");
+	}
+}
+
+void	special_text(t_env *env)
+{
+	mlx_string_put(env->mlx, env->win, env->sx - 184, 1, 0, "Move end:");
+	mlx_string_put(env->mlx, env->win, env->sx - 185, 0, 0xDDDDDD, "Move end:");
+	if (env->is_move == 1)
+	{
+		mlx_string_put(env->mlx, env->win, env->sx - 32, 1, 0x55BB55, "ON");
+		mlx_string_put(env->mlx, env->win, env->sx - 33, 0, 0x00FF00, "ON");
+	}
+	else
+	{
+		mlx_string_put(env->mlx, env->win, env->sx - 32, 1, 0xBB5555, "OFF");
+		mlx_string_put(env->mlx, env->win, env->sx - 33, 0, 0xFF0000, "OFF");
+	}
+	mlx_string_put(env->mlx, env->win, env->sx - 184, 21, 0, "Indent home:");
+	mlx_string_put(env->mlx, env->win, env->sx - 185, 20, 0xDDDDDD,
+			"Indent home:");
+	if (env->is_indent == 0)
+	{
+		mlx_string_put(env->mlx, env->win, env->sx - 32, 21, 0x55BB55, "ON");
+		mlx_string_put(env->mlx, env->win, env->sx - 33, 20, 0x00FF00, "ON");
+	}
+	else
+	{
+		mlx_string_put(env->mlx, env->win, env->sx - 32, 21, 0xBB5555, "OFF");
+		mlx_string_put(env->mlx, env->win, env->sx - 33, 20, 0xFF0000, "OFF");
+	}
 }
 
 double	absol(double val)

@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 15:40:59 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/05 23:21:33 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/06 19:20:28 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	init_val(t_env *env, char *arg)
 	env->pos_y = 0;
 	env->is_move = 1;
 	env->is_indent = 1;
+	env->is_text = 1;
 	env->move[0] = env->x1;
 	env->move[1] = env->y1;
 	env->meml = mlx_get_data_addr(env->img, &bpp, &(env->sizel), &edan);
